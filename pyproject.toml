@@ -25,6 +25,11 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
+[project.urls]
+Homepage = "https://github.com/khanhle-dev/tinyfy"
+Source = "https://github.com/khanhle-dev/tinyfy"
+Issues = "https://github.com/khanhle-dev/tinyfy/issues"
+
 [project.scripts]
 tiny = "tinyfy.cli:main"
 tinyfy = "tinyfy.cli:main"

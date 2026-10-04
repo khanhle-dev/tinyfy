@@ -1,3 +1,4 @@
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,7 +17,8 @@ class CompressTest(unittest.TestCase):
     def test_text_roundtrip(self):
         src = self.dir / "a.txt"
         src.write_text("hello world\n" * 10000)
-        for fmt in ("xz", "gz", "zst", "zip"):
+        fmts = ["xz", "gz", "zip"] + (["zst"] if shutil.which("zstd") else [])
+        for fmt in fmts:
             out = self.dir / fmt
             self.assertEqual(main([str(src), "-f", fmt, "-o", str(out)]), 0)
             archive = out / f"a.txt.{fmt}"
